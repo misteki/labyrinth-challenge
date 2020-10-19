@@ -1,0 +1,16 @@
+
+body {
+    --font-family: 'Montserrat Alternates', sans-serif;
+    --color-background: #9381FF;
+    --color-primary: #2F2F2F;
+    --color-accent1: #F6CA83;
+    --color-accent2: #81E979;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    min-height: 100vh;
+    font-family: var(--font-family);
+}
+
+button {
+    font-family: var(--font-family);
+}

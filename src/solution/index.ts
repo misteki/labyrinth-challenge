@@ -1,1 +1,1 @@
-export { Labyrinth as Solution } from './Labyrinth';
+export { default as Solution } from './Labyrinth/Labyrinth';

@@ -1,0 +1,33 @@
+.score {
+    font-size: 24px;
+    margin: 1em 0;
+}
+
+.score__status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score__controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.score__restart-button {
+    margin: 1em 0;
+    box-shadow: -6px 6px 0px -2px var(--color-primary);
+    border: 2px solid var(--color-accent1);
+    background-color: var(--color-accent1);
+    color: var(--color-primary);
+    border-radius: 3px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s all ease;
+}
+
+.score__restart-button:hover {
+    box-shadow: none;
+    background-color: var(--color-accent2);
+    border-color: var(--color-accent2);
+    color: var(--color-primary);
+}
