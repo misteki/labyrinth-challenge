@@ -1,36 +1,16 @@
 # Making Sense Labyrinth technical challenge
 
-> This challenge requires you to build a small application that works as a game using React.js.
+## The solution
+Some comments about my solution to the challenge:
+* The tests have been very slightly changed to adjust to the way I handle keydown events. No new tests have been added.
+* The Styling and Restart nice to have features have been implemented.
+* No target devices where assumed, so (taking into account that movement happens with arrows), Desktop was assumed as the intented target. Thus, no special adjustements have been made to support mobile devices. No target browsers were specified either, so modern browsers were assumed as the target, and thus modern CSS constructs such as CSS Variables are used (still, this has 95.29% global support as of October 2020).
+* Every variable declaration has been made on the smallest scope possible, that is, everything is declared on the same file of the component it´s used in. Only when something is used on more than one place I've hoisted it to a higher level in the file hierarchy. This is the case of some shared types, which I've put in the `src/solution/types.ts`.
+* Cell and border sized can be customized, both some minimal values are enforced (16px for cell size and 0px for borders). If values inferior to those are provided, they will be ignored and default to the afforementioned values.
+* The same applies to component props; for example, in the `Labyrinth` component there are two variables `title` and `borderWidth` which are declared as constants, since I did not think it was neccessary to pass them as props from the top-level app. If it was desired to customize these, they could just be turned into props.
+* No other parts of the provided app has been customized or changed.
 
-<br />
-
-## The rules of the final game are the following:
-> * You (the black and white circle) start at a customizable initial position
-> <br/> ![Initial](screen-initial.png)
-> * You can move using your keyboard's arrows (up/down/left/right)
-> * Your objective is to move from the initial cell (yellow) to the target cell (green) before you run out of moves:
-> <br/> ![Win](screen-win.png)
-> * When you win, you will get a "You won" message and won't be able to move any more
-> * If you do run out of moves before you reach the target cell, then you lose:
-> <br/> ![Lose](screen-lose.png)
-> * When you lose, you will get a "You lost" message and won't be able to move any more
-
-<br />
-
-## Technical requirements
-* You can add any library you consider will help you build or test the game as long as they are "regular web application" libraries. That means you can use libraries that help you with styles, state management, testing, etc, but not libraries that are meant exclusively for building games.
-* You have to pass the `unit tests` written in the `Labyrinth.test.tsx` file, but you can change those tests and the component's props if you consider that doing so might lead you to a better result.
-* You have to test the application/components covering more functionality than the one covered by the provided tests.
-* You have to build this application to the best of your abilities considering customization and the possibiility of extending it in the future.
-
-<br />
-
-## Nice to have
-> Not doing these items **WON'T** be penalized and **you are not required to do any of them**, but if you do decide to do some of them, they might add to your *score* always considering code quality
-* Styling (for example the circle/cells can be images or have movement/direction animations)
-* Restart functionality
-* Level progression (win and go the next level) 
-* High scores
-* Level builder
-* War fog
-* Anything you think might add value
+## Screenshots
+> <br/> ![Initial](new-screen-initial.png)
+> <br/> ![Win](new-screen-win.png)
+> <br/> ![Lose](lose-screen-lose.png)

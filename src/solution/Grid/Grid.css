@@ -1,0 +1,53 @@
+.grid {
+    box-shadow: -12px 12px 0px -2px var(--color-primary);
+    border: 1px solid var(--color-background);
+    position: relative;
+    margin-bottom: 12px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.grid__row {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid var(--color-primary);
+}
+
+.grid__row:last-of-type {
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.grid__cell {
+    width: 50px;
+    height: 50px;
+    border-left: 1px solid var(--color-primary);
+}
+
+.grid__cell:last-child {
+    border-right: 1px solid var(--color-primary);
+}
+
+.grid__cell--start {
+    background-color: var(--color-accent1);
+}
+
+.grid__cell--finish {
+    background-color: var(--color-accent2);
+}
+
+.grid__cell--blocked {
+    background-color: var(--color-primary);
+}
+
+.player-chip {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: all 0.2s ease;
+}
+
+.player-chip__svg {
+    stroke: var(--color-primary);
+    fill: var(--color-accent1);
+}

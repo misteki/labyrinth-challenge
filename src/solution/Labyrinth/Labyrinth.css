@@ -1,0 +1,14 @@
+
+.labyrinth {
+    width: fit-content;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.labyrinth__title {
+    font-size: 34px;
+    color: var(--color-accent1);
+    text-shadow: -4px 4px 0px var(--color-primary);
+    text-align: center;
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 
-import { Labyrinth } from "./solution/Labyrinth";
-import { Props } from "./solution/Labyrinth/Labyrinth";
+import Labyrinth from "./solution/Labyrinth/Labyrinth";
+import { LabyrinthProps } from "./solution/Labyrinth/Labyrinth";
 
 describe("Labyrinth", () => {
-  let props: Props;
+  let props: LabyrinthProps;
   beforeEach(() => {
     props = {
       targetPosition: [4, 4],
@@ -26,14 +26,12 @@ describe("Labyrinth", () => {
     const { container, getByTestId, queryByTestId } = render(
       <Labyrinth {...props} />
     );
-    fireEvent.keyDown(container, { key: "ArrowRight" });
-    fireEvent.keyDown(container, { key: "ArrowRight" });
-    fireEvent.keyDown(container, { key: "ArrowDown" });
-    fireEvent.keyDown(container, { key: "ArrowDown" });
-    fireEvent.keyDown(container, { key: "ArrowDown" });
-    fireEvent.keyDown(container, { key: "ArrowDown" });
-    fireEvent.keyDown(container, { key: "ArrowRight" });
-    fireEvent.keyDown(container, { key: "ArrowRight" });
+    expect(getByTestId("moves-message").textContent).toEqual("moves left 10");
+    const movements = ['ArrowRight', 'ArrowRight', 'ArrowDown', 'ArrowDown', 'ArrowDown', 'ArrowDown', 'ArrowRight', 'ArrowRight'];
+    movements.forEach(m => {
+      fireEvent.keyDown(window, { key: m });
+      fireEvent.keyUp(window, { key: m });
+    });
     expect(getByTestId("moves-message").textContent).toEqual("moves left 2");
     expect(queryByTestId("win-message")).toBeTruthy();
     expect(queryByTestId("lose-message")).not.toBeTruthy();
@@ -43,8 +41,11 @@ describe("Labyrinth", () => {
     const { container, getByTestId, queryByTestId } = render(
       <Labyrinth {...props} moveLimit={2} />
     );
-    fireEvent.keyDown(container, { key: "ArrowRight" });
-    fireEvent.keyDown(container, { key: "ArrowRight" });
+    const movements = ['ArrowRight', 'ArrowRight'];
+    movements.forEach(m => {
+      fireEvent.keyDown(window, { key: m });
+      fireEvent.keyUp(window, { key: m });
+    });
     expect(getByTestId("moves-message").textContent).toEqual("moves left 0");
     expect(queryByTestId("win-message")).not.toBeTruthy();
     expect(queryByTestId("lose-message")).toBeTruthy();
