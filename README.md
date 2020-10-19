@@ -13,4 +13,4 @@ Some comments about my solution to the challenge:
 ## Screenshots
 > <br/> ![Initial](new-screen-initial.png)
 > <br/> ![Win](new-screen-win.png)
-> <br/> ![Lose](lose-screen-lose.png)
+> <br/> ![Lose](new-screen-lose.png)
