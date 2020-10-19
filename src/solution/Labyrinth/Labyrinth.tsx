@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Labyrinth.css';
 import Grid from '../Grid/Grid';
-import Score from '../Score/Score';
+import Footer from '../Footer/Footer';
 import { Position, GameStatus } from '../types';
 
 export interface LabyrinthProps {
@@ -26,7 +26,6 @@ const useKey = () => {
 
     const onKeyRelease = (event: any) => {
       event.preventDefault();
-      console.log(event);
       setKey(null);
     }
 
@@ -85,6 +84,7 @@ const Labyrinth = (props: LabyrinthProps) => {
         break;
     }
   }
+  // Fire all side effects from movements
   if (positonChange) {
     const newPosition: Position = [currentPosition[0] + positonChange[0], currentPosition[1] + positonChange[1]];
     if (isMoveValid(newPosition)) {
@@ -107,7 +107,7 @@ const Labyrinth = (props: LabyrinthProps) => {
         <h2 className="labyrinth__title">{title}</h2>
       </header>
       <Grid availableCells={availableCells} cellSize={cellSize} startingPosition={startingPosition} targetPosition={targetPosition} currentPosition={currentPosition} borderWidth={borderWidth}></Grid>
-      <Score startingPosition={startingPosition} targetPosition={targetPosition} currentPosition={currentPosition} movesLeft={movesLeft} gameStatus={gameStatus} onRestart={onRestart}></Score>
+      <Footer startingPosition={startingPosition} targetPosition={targetPosition} currentPosition={currentPosition} movesLeft={movesLeft} gameStatus={gameStatus} onRestart={onRestart}></Footer>
     </main>
   );
 };
