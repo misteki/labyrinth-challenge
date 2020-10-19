@@ -23,6 +23,7 @@ interface GridProps {
 const Grid = (props: GridProps) => {
     const { availableCells, cellSize, startingPosition, targetPosition, currentPosition, borderWidth } = props;
     const positiveBorderWidth = borderWidth >= 0 ? borderWidth : 0;
+    const positiveCellSize = cellSize > 16 ? cellSize : 16;
 
     const isPositionEqual = (p1: Position, p2: Position): boolean => {
         return p1[0] === p2[0] && p1[1] === p2[1];
@@ -43,11 +44,11 @@ const Grid = (props: GridProps) => {
     };
 
     const chipDrawData: ChipData = {
-        top: borderWidth + Math.floor(currentPosition[0] * (cellSize + borderWidth)),
-        left: borderWidth + Math.floor(currentPosition[1] * (cellSize + borderWidth)),
-        centerX: (cellSize + (borderWidth / 2)) * 0.5,
-        centerY: (cellSize + (borderWidth / 2)) * 0.5,
-        radius: 0.3 * cellSize,
+        top: borderWidth + Math.floor(currentPosition[0] * (positiveCellSize + borderWidth)),
+        left: borderWidth + Math.floor(currentPosition[1] * (positiveCellSize + borderWidth)),
+        centerX: (positiveCellSize + (borderWidth / 2)) * 0.5,
+        centerY: (positiveCellSize + (borderWidth / 2)) * 0.5,
+        radius: 0.3 * positiveCellSize,
         strokeWidth: borderWidth,
     };
 
@@ -57,13 +58,13 @@ const Grid = (props: GridProps) => {
                 <div className="grid__row" key={`grid-row-${rowIndex}`} style={{ borderWidth: positiveBorderWidth }}>
                     {row.map((cell, columnIndex) =>
                         <div className={getCellClasses(cell, [rowIndex, columnIndex])}
-                            key={`grid__row-${rowIndex}-${columnIndex}`} style={{ width: cellSize, height: cellSize, borderWidth: positiveBorderWidth }}>
+                            key={`grid__row-${rowIndex}-${columnIndex}`} style={{ width: positiveCellSize, height: positiveCellSize, borderWidth: positiveBorderWidth }}>
                         </div>
                     )}
                 </div>
             )}
             <picture className="player-chip" style={{ top: chipDrawData.top, left: chipDrawData.left }}>
-                <svg height={cellSize} width={cellSize}>
+                <svg height={positiveCellSize} width={positiveCellSize}>
                     <circle cx={chipDrawData.centerX} cy={chipDrawData.centerY} r={chipDrawData.radius} strokeWidth={chipDrawData.strokeWidth} className="player-chip__svg" />
                 </svg>
             </picture>

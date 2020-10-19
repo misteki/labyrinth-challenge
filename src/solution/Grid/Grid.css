@@ -3,6 +3,8 @@
     border: 1px solid var(--color-background);
     position: relative;
     margin-bottom: 12px;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .grid__row {

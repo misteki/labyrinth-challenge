@@ -19,7 +19,7 @@ function App() {
       ]}
       startingPosition={[4, 4]}
       moveLimit={25}
-      cellSize={50}
+      cellSize={5}
     />
   );
 }
